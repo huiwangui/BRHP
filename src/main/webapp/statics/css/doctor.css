@@ -1,0 +1,342 @@
+
+/*---------------------------------------*/
+body,ul,p{
+    margin:0;
+    padding:0;
+}
+body{
+    font-family: 'Microsoft YaHei';
+    color:#666666;
+}
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+.clr{
+    float: none;
+    clear:both;
+}
+.topBox{
+    height:36px;
+    background:#f5f5f5;
+}
+.top,.logo,.nav,.current,.search,.list,.footer,.bottom{/*-----------公共宽度-----------------*/
+    width:1100px;
+    margin:0 auto;
+}
+.top span{
+    font-family: '方正Microsoft YaHei';
+    font-size:13.34px;
+    line-height:36px;
+    color:#666666;
+}
+.top li{
+    margin-left:10px;
+    float:left;
+}
+.top a{
+    display: inline-block;
+    height:20px;
+    width:95px;
+    border:1px solid #56adff;
+    margin-top:8px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 10px 10px;
+    color:#666666;
+}
+.topBox ul,.logo ul{
+    overflow:hidden;
+    float:right;
+}
+
+
+/*------------logo------------*/
+.logoMargin{
+    margin:10px 0;
+}
+.logo ul{
+    margin-top:25px;
+}
+.logo ul li{
+    height:26px;
+    line-height: 26px;
+    margin-right:10px;
+    text-align: center;
+    float:left;
+}
+.logo ul li img{
+    vertical-align: middle;
+}
+.weather{
+    margin-left:100px;
+}
+
+/*------------菜单------------------*/
+.navBox{
+    height:50px;
+    background:#1990ff;
+}
+.nav{
+    overflow:hidden;
+}
+.nav li{
+    float:left;
+}
+.nav li:hover{
+    background: #026ccf;
+}
+.nav a{
+    line-height: 50px;
+    color:white;
+    text-decoration:none;
+    padding:0 30px;
+}
+/*--------------医生列表-------------------*/
+.search{
+    margin-top:5px;
+}
+.search a{
+    display:inline-block;
+    color:#666666;
+    width:200px;
+    height:50px;
+    text-align: center;
+    line-height: 50px;
+    border:1px solid #e5e5e5;
+    margin-bottom: -1px;
+}
+.search .aBorder{
+    border-right: none;
+    margin-left: -1px;
+}
+.search .aRight{
+    background: #fafafa;
+    border-bottom:1px solid #fafafa;
+    color:#1990ff;
+}
+.search ul{
+    float:right;
+}
+.search li{
+    float:left;
+}
+.search input{
+    height:30px;
+    border:1px solid #fec009;
+}
+button{
+    width:34px;
+    height:34px;
+    cursor: pointer;
+    border: 0 solid yellow;
+    background: #fec009;
+    border-radius: 0 4px 4px 0;
+}
+
+/*---------------医生排列-------------------*/
+.order,.kind,.doctorList{
+    width:97%;
+    margin:0 auto;
+}
+.order{
+    margin-top:15px;
+    margin-bottom:15px;
+}
+.order select{
+    width:100px;
+    font-size:16px;
+    color:#666666;
+}
+.list{
+    /*height:400px;*/
+    border:1px solid #e5e5e5;
+    background:#fafafa;
+}
+.kind{
+    /*border:1px solid #e5e5e5;*/ 
+    position: relative;
+    font-family:"微软雅黑";
+}
+.kind ul.kind-head{
+    width: 80%;
+     font-size:16px;
+}
+.kind ul li{
+   
+    line-height:36px;
+    margin-left:25px;
+    display: inline-block;
+    cursor: pointer;
+}
+.kind ul.kind-info{
+    background-color: #FFF;
+    margin-bottom: 10px;
+    border:1px solid #ddd;
+    font-size:15px;
+} 
+
+.kind p{
+    position: absolute;
+    top: 6px;
+    right: 20px;
+    margin-right:30px;
+    float:right;
+}
+.kind p a{
+    font-size:14px;
+    color:#666666;
+}
+.kind p span{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url(../../statics/image/ggg/unfold.png);
+    vertical-align: top;
+    margin-right: 10px;
+}
+
+/*---------------列表------------------*/
+
+.doctorList ul{
+    overflow: hidden;
+}
+.doctorBox{
+    margin-right:17px;
+}
+.doctorList ul li{
+    margin-bottom:10px;
+    float:left;
+}
+.doctorList li{
+    width:48%;
+    height:145px;
+    border:1px solid #e5e5e5;
+    background: white;
+}
+.doctorList li:hover{
+    background: #f3fcfe;
+}
+.doctorList li div{
+    float:left;
+}
+.headPic{
+    margin-top:20px;
+    margin-left:10px;
+}
+.headBox{
+    width:88px;
+    height:88px;
+    border:1px solid #e5e5e5;
+    border-radius: 44px;
+    overflow: hidden;
+}
+.headBox img{
+    width:100%;
+}
+.headName{
+    margin-top:20px;
+    width:250px;
+}
+.headName p{
+    margin:5px;
+}
+.headName p img{
+    margin-top:4px;
+}
+.name{
+    font-size:18.67px;
+    font-family: "Microsoft YaHei";
+}
+.position{
+    font-size:14.67px;
+}
+.department{
+    font-size:14.67px;
+    color:#fec009;
+}
+.hospital{
+    font-size:14.67px;
+}
+.introduce{
+    font-size:13.34px;
+}
+.orderDoc{
+    margin-top:50px;
+    margin-left:50px;
+}
+.name:hover{
+    text-decoration: underline;
+}
+/*------------尾部--------------*/
+.footerBg{
+    height:210px;
+    background:#0184ff;
+    margin-top:10px;
+}
+.footer div{
+    float:left;
+    color:white;
+    font-family: "Microsoft YaHei";
+    font-size:14.67px;
+}
+.footLogo{
+    margin-top:60px;
+}
+.friendLink{
+    margin-left:30px;
+}
+.friendLink p{
+    margin-top:40px;
+}
+.link{
+    float:left;
+    margin-right:10px;
+}
+.lingUl{
+    overflow: hidden;
+}
+.link li{
+    height:25px;
+    line-height: 25px;
+}
+.link a{
+    color:white;
+}
+.yiYang{
+    margin-top:20px!important;
+}
+.suggest{
+    margin-top:50px;
+    margin-left:70px;
+}
+.suggest div{
+    margin:0 30px;
+}
+/*-------------底部声明----------------*/
+.bottomBg{
+    height:30px;
+    background:#f5f5f5;
+}
+.bottom{
+    line-height: 30px;
+    overflow: hidden;
+    font-size: 13.34px;
+    color:#666666;
+}
+.bottom a{
+    color:#666666;
+}
+.bottom div{
+    float:left;
+}
+.middle{
+    margin-left:170px;
+}
+.right{
+    margin-left:200px;
+}
+
+

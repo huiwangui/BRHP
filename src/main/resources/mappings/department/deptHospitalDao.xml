@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boco.modules.brhp.dao.department.DeptHospitalDao">
+	<sql id="t_department_colums" >
+		a.dept_id,
+		a.parent_dept_id,
+		a.region_code,
+		a.org_id,
+		a.name,
+		a.pingyin_code,
+		a.standard_dept_code,
+		a.introduction,
+		a.sort_code,
+		a.name
+  	</sql>
+  	
+  	<sql id="t_dept_hospital_colums">
+  		b.dept_property,
+		b.dept_type,
+		b.director_name,
+		b.director_id,
+		b.head_nurse_name,
+		b.head_nurse_id,
+		b.beds_num,
+		b.position,
+		b.chief_physician_num,
+		b.vice_chief_physician_num,
+		b.resident_num,
+		b.nurse_num,
+		b.service_scope,
+		b.consumer,
+		b.img
+  	</sql>
+  	
+	<!-- 查询医院下的一级科室列表 -->
+	<select id="getHospitalFirstLevelDepts" parameterType="com.boco.modules.brhp.vo.DeptHospitalVo" resultType="com.boco.modules.brhp.vo.DeptHospitalVo">
+		SELECT
+			<include refid="t_department_colums" />,
+			<include refid="t_dept_hospital_colums" />
+		FROM
+			t_dept_department a
+		RIGHT JOIN t_dept_hospital_dept b ON a.dept_id = b.dept_id
+		WHERE
+			a.parent_dept_id IS NULL
+		AND a.org_id = #{orgId}
+		AND a.status = 1
+	</select>
+	
+	<!-- 获取子科室列表 -->
+	<select id="getHospitalChildrenDepts" resultType="com.boco.modules.brhp.vo.DeptHospitalVo">
+		SELECT
+			<include refid="t_department_colums" />,
+			<include refid="t_dept_hospital_colums" />
+		FROM
+			t_dept_department a
+		RIGHT JOIN t_dept_hospital_dept b ON a.dept_id = b.dept_id
+		WHERE
+			a.parent_dept_id = #{0}
+		AND a.status = 1
+	</select>
+	
+	<!-- 获取父级科室详情 -->
+	<select id="getParentDeptDetail" resultType="com.boco.modules.brhp.vo.DeptHospitalVo">
+		SELECT
+			<include refid="t_department_colums" />,
+			<include refid="t_dept_hospital_colums" />
+		FROM
+			t_dept_department a
+		RIGHT JOIN t_dept_hospital_dept b ON a.dept_id = b.dept_id
+		WHERE
+			a.dept_id = (
+				SELECT
+					parent_dept_id
+				FROM
+					t_dept_department
+				WHERE
+					dept_id = #{0}
+			)
+		AND a. STATUS = 1
+	</select>
+	
+</mapper>

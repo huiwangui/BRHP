@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boco.modules.brhp.dao.staff.StaffDao">
+	<!-- 查询医生列表 -->
+	<select id="getStaffList" parameterType="com.boco.modules.brhp.vo.StaffVo" resultType="com.boco.modules.brhp.vo.StaffVo">
+		SELECT
+			a.staff_id,
+			a.`name`,
+			c.label,
+			e.`name` deptName,
+			f.org_name,
+			a.img,
+			b.introduction,
+			b.specialty,
+			f.org_id,
+			e.dept_id
+		FROM
+			t_staff a
+		LEFT JOIN t_staff_detail b ON a.staff_id = b.staff_id
+		LEFT JOIN t_staff_office c ON a.staff_id = c.staff_id
+		LEFT JOIN t_dept_department e ON c.dept_id = e.dept_id
+		LEFT JOIN t_org_organization f ON c.org_id = f.org_id
+		<where>
+			<if test="deptId != null and deptId != 0">
+				c.dept_id = #{deptId}
+			</if>
+			<if test="orgId != null and orgId != 0">
+				AND c.org_id = #{orgId}
+			</if>
+			<if test="name != null and name != ''">
+				AND (a.name like CONCAT('%', #{name}, '%') or f.org_name like CONCAT('%', #{name}, '%') or e.name like CONCAT('%',#{name},'%'))
+			</if>
+		</where>
+		GROUP BY
+			a.staff_id,
+			a.`name`,
+			c.label,
+			e.`name`,
+			f.org_name,
+			a.img,
+			b.introduction,
+			b.specialty
+	</select>
+	
+	<!-- 获取医生详细信息 -->
+	<select id="getStaffDetail" parameterType="integer" resultType="com.boco.modules.brhp.vo.StaffVo">
+		SELECT
+			a.staff_id,
+			a.`name`,
+			a.mobile,
+			a.img,
+			b.org_id,
+			b.introduction,
+			b.specialty,
+			c.org_name
+		FROM
+			t_staff a
+		LEFT JOIN t_staff_detail b ON a.staff_id = b.staff_id
+		LEFT JOIN t_org_organization c ON b.org_id = c.org_id
+		WHERE
+			a.staff_id = #{0}
+	</select>
+	
+	<!-- 获取医生职位列表 -->
+	<select id="getOfficeList" parameterType="integer" resultType="com.boco.modules.brhp.vo.StaffOfficeVo">
+		SELECT
+			a.professional_code,
+			a.dept_id,
+			a.label,
+			b.`name` deptName
+		FROM
+			t_staff_office a
+		LEFT JOIN t_dept_department b ON a.dept_id = b.dept_id
+		WHERE
+			staff_id = #{0}
+	</select>
+	
+	<!--查询医生总条数  -->
+	<select id="getCount"  parameterType="com.boco.modules.brhp.vo.StaffVo" resultType="integer">
+	select count(1)
+FROM
+	(
+		SELECT
+			a.staff_id,
+			a.`name`,
+			c.label,
+			e.`name` deptName,
+			f.org_name,
+			a.img,
+			b.introduction,
+			b.specialty,
+			f.org_id,
+			e.dept_id
+		FROM
+			t_staff a
+		LEFT JOIN t_staff_detail b ON a.staff_id = b.staff_id
+		LEFT JOIN t_staff_office c ON a.staff_id = c.staff_id
+		LEFT JOIN t_dept_department e ON c.dept_id = e.dept_id
+		LEFT JOIN t_org_organization f ON c.org_id = f.org_id
+		<where>
+			<if test="deptId != null and deptId != 0">
+				c.dept_id = #{deptId}
+			</if>
+			<if test="orgId != null and orgId != 0">
+				AND c.org_id = #{orgId}
+			</if>
+			<if test="name != null and name != ''">
+				AND (a.name like CONCAT('%', #{name}, '%') or f.org_name like CONCAT('%', #{name}, '%') or e.name like CONCAT('%',#{name},'%'))
+			</if>
+		</where>
+		GROUP BY
+			a.staff_id,
+			a.`name`,
+			c.label,
+			e.`name`,
+			f.org_name,
+			a.img,
+			b.introduction,
+			b.specialty
+	) tmp_count
+	</select>
+</mapper>

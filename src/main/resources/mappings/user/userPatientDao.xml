@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boco.modules.brhp.dao.user.UserPatientDao">
+	<sql id="Base_Column_List" >
+	    id, uid, patient_name, patient_sex, patient_date_of_birth, patient_id_card, patient_mobile, 
+	    default_flag, authentication_state, create_time, update_time
+  	</sql>
+  	
+  	<!-- 获取某人的就诊人列表 -->
+  	<select id="getPatientList" parameterType="com.boco.modules.brhp.vo.UserPatientVo" resultType="com.boco.modules.brhp.vo.UserPatientVo">
+  		select 
+  			<include refid="Base_Column_List" />,
+  			year(now()) - year(patient_date_of_birth) age
+    	from t_user_patient
+    	where uid=#{uid}
+  	</select>
+  	
+  	<!-- 新增 -->
+  	<insert id="insert" parameterType="com.boco.modules.brhp.model.user.UserPatientEntity">
+  		insert into t_user_patient (uid, patient_name, 
+	      patient_sex, patient_date_of_birth, patient_id_card, 
+	      patient_mobile, default_flag, authentication_state, 
+	      create_time, update_time)
+	    values (#{uid,jdbcType=VARCHAR}, #{patientName,jdbcType=VARCHAR}, 
+	      #{patientSex,jdbcType=VARCHAR}, #{patientDateOfBirth,jdbcType=DATE}, #{patientIdCard,jdbcType=VARCHAR}, 
+	      #{patientMobile,jdbcType=VARCHAR}, #{defaultFlag,jdbcType=VARCHAR}, #{authenticationState,jdbcType=VARCHAR}, 
+	      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  	</insert>
+  	
+  	<!-- 修改 -->
+  	<update id="update" parameterType="com.boco.modules.brhp.model.user.UserPatientEntity">
+  		update t_user_patient set 
+	      patient_name = #{patientName,jdbcType=VARCHAR},
+	      patient_sex = #{patientSex,jdbcType=VARCHAR},
+	      patient_date_of_birth = #{patientDateOfBirth,jdbcType=DATE},
+	      patient_id_card = #{patientIdCard,jdbcType=VARCHAR},
+	      patient_mobile = #{patientMobile,jdbcType=VARCHAR},
+	      default_flag = #{defaultFlag,jdbcType=VARCHAR},
+	      update_time = #{updateTime,jdbcType=TIMESTAMP}
+	    where uid = #{uid}
+  	</update>
+  	
+  	<!-- 删除 -->
+  	<delete id="delete">
+  		delete from t_user_patient where id=#{0}
+  	</delete>
+	
+	<!-- 把所有默认标识置为0 -->
+	<update id="resetDefaultFlag" parameterType="string">
+		update t_user_patient set default_flag = 0 where uid = #{0}
+	</update>  
+	<!-- 修改 -->
+  	<update id="updateById" parameterType="int">
+  		update t_user_patient set 
+	      default_flag = 1
+	    where id = #{id}
+  	</update>	
+</mapper>

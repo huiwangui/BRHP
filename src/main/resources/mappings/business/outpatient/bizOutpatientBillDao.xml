@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boco.modules.brhp.dao.business.outpatient.BizOutpatientPaybillDao">
+	<insert id="insert" parameterType="com.boco.modules.brhp.model.business.outpatient.BizOutpatientPaybillEntity">
+		insert into t_biz_outpatient_paybill (payment_number, org_id, 
+	      tran_type, tran_amount, payer_bank_code, 
+	      payer_bank_name, re_bank_name, cust_id, 
+	      order_number, `explain`, check_time, 
+	      check_state, bank_result_code, create_time, 
+	      update_time, deal_time, tran_state
+	      )
+	    values (#{paymentNumber,jdbcType=VARCHAR}, #{orgId,jdbcType=INTEGER}, 
+	      #{tranType,jdbcType=VARCHAR}, #{tranAmount,jdbcType=DECIMAL}, #{payerBankCode,jdbcType=VARCHAR}, 
+	      #{payerBankName,jdbcType=VARCHAR}, #{reBankName,jdbcType=VARCHAR}, #{custId,jdbcType=INTEGER}, 
+	      #{orderNumber,jdbcType=VARCHAR}, #{explain,jdbcType=VARCHAR}, #{checkTime,jdbcType=TIMESTAMP}, 
+	      #{checkState,jdbcType=VARCHAR}, #{bankResultCode,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+	      #{updateTime,jdbcType=TIMESTAMP}, #{dealTime,jdbcType=TIMESTAMP}, #{tranState,jdbcType=VARCHAR}
+	      )
+	</insert>
+</mapper>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boco.modules.brhp.dao.healthedu.HealthEduArticleDao">
+
+	<!-- 获取文章列表 -->
+	<select id="getArticleList" parameterType="com.boco.modules.brhp.vo.HealthEduArticleVo" resultType="com.boco.modules.brhp.vo.HealthEduArticleVo">
+		SELECT
+			a.id,
+			a.module_id,
+			a.title,
+			a.content,
+			a.author,
+			a.todayhits,
+			a.totalhits,
+			a.context,
+			a.create_time,
+			b.module_name,
+			DATE_FORMAT(
+				a.create_time,
+				'%Y-%m-%d %T'
+			) createTimeStr
+		FROM
+			t_health_edu_article a
+		LEFT JOIN t_health_edu_module b ON a.module_id = b.id
+		<where>
+			<if test="moduleId != null and moduleId != 0">
+				a.module_id = #{moduleId}
+			</if>
+		</where>
+		ORDER BY a.create_time DESC
+	</select>
+	
+	<!-- 获取文章总数 -->
+	<select id="getArticleCount" parameterType="com.boco.modules.brhp.vo.HealthEduArticleVo" resultType="integer">
+		SELECT
+			count(a.id)
+		FROM
+			t_health_edu_article a
+		LEFT JOIN t_health_edu_module b ON a.module_id = b.id
+		<where>
+			<if test="moduleId != null and moduleId != 0">
+				a.module_id = #{moduleId}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 新增文章 -->
+	<insert id="insert" parameterType="com.boco.modules.brhp.model.healthedu.HealthEduArticleEntity">
+		insert into t_health_edu_article (module_id, title, 
+	      author, create_time, content
+	      )
+	    values (#{moduleId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+	      #{author,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR}
+	      )
+	</insert>
+	
+	<!-- 获取文章 -->
+	<select id="getArticle" parameterType="integer" resultType="com.boco.modules.brhp.vo.HealthEduArticleVo">
+		SELECT
+			a.id,
+			a.module_id,
+			a.title,
+			a.content,
+			a.author,
+			a.create_time,
+			b.module_name,
+			DATE_FORMAT(
+				a.create_time,
+				'%Y-%m-%d %T'
+			) createTimeStr
+		FROM
+			t_health_edu_article a
+		LEFT JOIN t_health_edu_module b ON a.module_id = b.id
+		where a.id = #{0}
+	</select>
+	
+	<!-- 修改文章 -->
+	<update id="update" parameterType="com.boco.modules.brhp.model.healthedu.HealthEduArticleEntity">
+		 update t_health_edu_article
+		    <set>
+		      <if test="moduleId != null" >
+		        module_id = #{moduleId,jdbcType=INTEGER},
+		      </if>
+		      <if test="title != null" >
+		        title = #{title,jdbcType=VARCHAR},
+		      </if>
+		      <if test="author != null" >
+		        author = #{author,jdbcType=VARCHAR},
+		      </if>
+		      <if test="createTime != null" >
+		        create_time = #{createTime,jdbcType=TIMESTAMP},
+		      </if>
+		      <if test="content != null" >
+		        content = #{content,jdbcType=LONGVARCHAR},
+		      </if>
+		    </set>
+		    where id = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<!-- 删除文章 -->
+	<delete id="delete" parameterType="string">
+		delete from t_health_edu_article where id = #{0}
+	</delete>
+</mapper>

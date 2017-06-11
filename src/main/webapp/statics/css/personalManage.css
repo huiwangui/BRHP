@@ -1,0 +1,68 @@
+
+.nav .current{
+    background: #026ccf;
+}
+.message-box{
+    width:1100px;
+    height:600px;
+    margin:10px auto 0;
+    background:#fafafa;
+    border:1px solid #e5e5e5;
+    overflow: hidden;
+}
+.message-box>div{
+    float: left;
+}
+.left-msg{
+    width:250px;
+    height:600px;
+    background:#ebf3ff;
+}
+.left-msg .current{/*-------当前栏颜色---------*/
+    background: #fafafa;
+}
+.left-msg .current span{
+    color:#1990ff;
+}
+.left-msg li a{
+    display: block;
+    width:250px;
+    height:50px;
+    line-height: 50px;
+}
+.left-msg li img{
+    margin-left: 30px;
+    vertical-align: middle;
+}
+.left-msg li span{
+    margin-left: 15px;
+    color:#808080;
+}
+
+/*-----右侧信息栏------*/
+.right-top{
+    margin-left:50px;
+    margin-top:40px;
+    width:738px;
+}
+
+/*表格*/
+table{
+    border-top: 1px solid #e5e5e5;
+    border-left: 1px solid #e5e5e5;
+    border-spacing: 0;
+    margin-left:50px;
+    margin-top:25px;
+}
+table td{
+    text-align: center;
+    height:30px;
+    border-right:1px solid #e5e5e5;
+    border-bottom:1px solid #e5e5e5;
+}
+table .tHead{
+    background:#ebf3ff;
+}
+table .blue{
+    color:#1990ff;
+}

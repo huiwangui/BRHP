@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boco.modules.brhp.dao.user.UserDao">
+	<sql id="Base_Column_List" >
+	    uid, nickname, nick_code,password, mobile, img, status, email, create_time, update_time, update_id, 
+	    login_time, signature, verification_flag, del_flag
+  	</sql>
+  	
+  	<!-- 新增用户 -->
+  	<insert id="insert" parameterType="com.boco.modules.brhp.model.user.UserEntity">
+  		insert into t_user (uid, nickname, nick_code,password, 
+	      mobile, img, status, 
+	      email, create_time, update_time, 
+	      update_id, login_time, signature, 
+	      verification_flag, del_flag)
+	    values (#{uid,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{nickCode,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR}, 
+	      #{mobile,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+	      #{email,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+	      #{updateId,jdbcType=VARCHAR}, #{loginTime,jdbcType=TIMESTAMP}, #{signature,jdbcType=VARCHAR}, 
+	      #{verificationFlag,jdbcType=VARCHAR}, #{delFlag,jdbcType=VARCHAR})
+  	</insert>
+  	
+  	<!-- 获取用户列表 -->
+  	<select id="getUserList" resultType="com.boco.modules.brhp.model.user.UserEntity">
+  		select 
+  			<include refid="Base_Column_List" />
+  		from t_user
+  	</select>
+  	
+  	<!-- 获取用户，用于登录验证、字段判断重复等 -->
+  	<select id="getUser" resultType="com.boco.modules.brhp.vo.UserVo" parameterType="com.boco.modules.brhp.vo.UserVo">
+  		SELECT
+			a.uid,
+			a.nickname,
+			a.nick_code,
+			a. PASSWORD,
+			a.mobile,
+			a.img,
+			a.email,
+			a.signature,
+			b.health_file_code,
+			b. NAME,
+			b.sex,
+			b.credentials_type,
+			b.id_card,
+			b.date_of_birth,
+			year(now())- year( b.date_of_birth) age,
+			DATE_FORMAT(b.date_of_birth,'%Y-%m-%d') dateOfBirthStr
+		FROM
+			t_user a
+		LEFT JOIN t_user_authentication b ON a.uid = b.uid
+		where a.del_flag=0 and a.`status`=1
+		<if test="nickCode != null and nickCode != ''">
+			and a.nick_code = #{nickCode}
+		</if>
+		<if test="mobile != null and mobile != ''">
+			and a.mobile = #{mobile}
+		</if>
+		<if test="password != null and password != ''">
+			and a.password = #{password}
+		</if>
+		<if test="idCard != null and idCard != ''">
+			and b.id_card = #{idCard}
+		</if>
+		<!-- 修改用户信息的时候，验证是否重复要除开当前登录用户 -->
+		<if test='uid != null and uid != "" and getByUidFlag == 0'>
+			and a.uid != #{uid}
+		</if>
+		<!-- 通过uid获取唯一记录 -->
+		<if test='uid != null and uid != "" and getByUidFlag == 1'>
+			and a.uid = #{uid}
+		</if>
+  	</select>
+  	
+  	<!-- 修改个人基本信息 -->
+  	<update id="update" parameterType="com.boco.modules.brhp.model.user.UserEntity">
+  		update t_user set
+	      nickname = #{nickname,jdbcType=VARCHAR},
+	      nick_code = #{nickCode,jdbcType=VARCHAR},
+	      <!-- password = #{password,jdbcType=VARCHAR},-->
+	      mobile = #{mobile,jdbcType=VARCHAR},
+	      img = #{img,jdbcType=VARCHAR},
+	      <!-- status = #{status,jdbcType=VARCHAR}, -->
+	      email = #{email,jdbcType=VARCHAR},
+	      update_time = #{updateTime,jdbcType=TIMESTAMP},
+	      update_id = #{updateId,jdbcType=VARCHAR}
+	      <!-- login_time = #{loginTime,jdbcType=TIMESTAMP}, -->
+	      <!-- signature = #{signature,jdbcType=VARCHAR}, -->
+	      <!-- verification_flag = #{verificationFlag,jdbcType=VARCHAR} -->
+	    where uid=#{uid}
+  	</update>
+  	
+  	<update id="changePassword">
+  		update t_user set password = #{1} where uid = #{0}
+  	</update>
+</mapper>

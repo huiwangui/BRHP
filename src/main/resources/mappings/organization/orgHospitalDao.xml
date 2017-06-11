@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boco.modules.brhp.dao.organization.OrgHospitalDao">
+	<!-- 查询医院列表 -->
+	<select id="getHospitalList" parameterType="com.boco.modules.brhp.vo.OrgHospitalVo" resultType="com.boco.modules.brhp.vo.OrgHospitalVo">
+		SELECT
+			a.org_id,a.org_code,
+			a.org_name,a.org_simple_name,
+			a.introduction,b.level_code,
+			b.grade_code,
+			CONCAT(
+				CASE b.level_code
+				WHEN 1 THEN
+					'一级'
+				WHEN 2 THEN
+					'二级'
+				WHEN 3 THEN
+					'三级'
+				END,
+				CASE b.grade_code
+			WHEN 1 THEN
+				'特等'
+			WHEN 2 THEN
+				'甲等'
+			WHEN 3 THEN
+				'乙等'
+			WHEN 4 THEN
+				'合格'
+			END
+			) level_chs,
+			c.detail_address,c.fixed_telephone,
+			c.mobile,a.web_site,a.img
+		FROM
+			t_org_organization a
+		RIGHT JOIN t_org_hospital b ON a.org_id = b.org_id
+		LEFT JOIN t_org_contact_information c ON a.org_id = c.org_id
+		WHERE a.`status`=1 AND c.`status`=1
+		<if test="orgName != null and orgName != ''">
+			AND	a.org_name like CONCAT('%', #{orgName}, '%')
+		</if>
+	</select>
+	
+	<!-- 查看医院详情 -->
+	<select id="getHospitalDetail" parameterType="integer" resultType="com.boco.modules.brhp.vo.OrgHospitalVo">
+		SELECT
+			a.org_id,
+			a.org_name,
+			a.img,
+			a.web_site,
+			a.introduction,
+			b.level_code,
+			b.grade_code,
+			c.detail_address,
+			c.fixed_telephone,
+			CONCAT(
+				CASE b.level_code
+				WHEN 1 THEN
+					'一级'
+				WHEN 2 THEN
+					'二级'
+				WHEN 3 THEN
+					'三级'
+				END,
+				CASE b.grade_code
+			WHEN 1 THEN
+				'特等'
+			WHEN 2 THEN
+				'甲等'
+			WHEN 3 THEN
+				'乙等'
+			WHEN 4 THEN
+				'合格'
+			END
+			) level_chs
+		FROM
+			t_org_organization a
+		LEFT JOIN t_org_hospital b ON a.org_id = b.org_id
+		LEFT JOIN t_org_contact_information c ON a.org_id = c.org_id
+		WHERE
+			a.org_id = #{0}
+	</select>
+	<!-- 查看停诊公告 -->
+	<select id="getStopNotice" parameterType="com.boco.modules.brhp.vo.StopNoticeVo" resultType="com.boco.modules.brhp.vo.StopNoticeVo">
+		SELECT
+		 a.id,
+		 a.org_id,
+		 a.dept_id,
+		 a.staff_id,
+		 a.stop_time,
+		 a.stop_date,
+		 a.stop_reason,
+		 a.create_time,
+		 b.name deptName,
+		 c.name staffName,
+		 e.org_name,
+		 d.level_code,
+		 d.grade_code
+		FROM
+		  t_biz_outpatient_stop a
+		 
+		LEFT JOIN t_dept_department b ON a.dept_id = b.dept_id
+		LEFT JOIN t_staff c ON a.staff_id = c.staff_id
+		LEFT JOIN  t_org_hospital d ON a.org_id = d.org_id
+		LEFT JOIN   t_org_organization e ON a.org_id = e.org_id
+		WHERE 1=1
+		
+		<if test="orgId != null and orgId != ''">
+			AND	a.org_id = #{orgId}
+		</if>
+		
+	</select>
+</mapper>

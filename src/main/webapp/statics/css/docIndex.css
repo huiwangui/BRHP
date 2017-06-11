@@ -1,0 +1,140 @@
+.logo{
+	height:77px;
+}
+.nav .current{
+    background: #026ccf;
+}
+img{
+	border:0
+}
+.banner{
+    width:100%;
+    height:440px;
+    position:relative;
+}
+
+.banner .img{
+	position:absolute;width:100%;height:440px;
+	z-index: -1;
+}
+.banner-box,.index-msg-box{
+    width:1100px;
+    margin:0 auto;
+    overflow: hidden;
+}
+.banner-box ul{
+    float:right;
+}
+.banner-box li{
+    margin-bottom:-3px;
+}
+.banner-box .second{
+    margin-top:109px;
+}
+
+.index-msg-box>div{
+    float:left;
+    margin-top:10px;
+}
+
+.index-msg-box .block{
+    display: inline-block;
+    width:30px;
+    height:30px;
+    line-height: 30px;
+    text-align: center;
+    color:white;
+    background: #1990ff;
+}
+.index-msg-box .msg{
+    height:250px;
+    border:1px solid #e5e5e5;
+    background:#fafafa;
+}
+.notice-msg{
+    width:350px;
+}
+.msg{
+    position: relative;
+}
+.index-msg-box a{
+    color:#4c4c4c;
+}
+.msg img{
+    position: absolute;
+    bottom: 10px;
+    right:10px;
+}
+.index-msg-box .blue{
+    color:#1990ff;
+}
+.index-msg-box .english{
+    font-size:13.34px;
+}
+.notice-msg p{
+    margin:10px;
+    font-size:14.67px;
+}
+.hot,.stop{
+    margin-left:20px;
+}
+.hot-msg{
+    width:420px;
+}
+.hot-msg .left{
+    float:left;
+}
+.hot-msg p{
+    margin:5px 10px;
+}
+.hot-msg .date{
+    float:right;
+    margin-right:30px;
+}
+
+.stop-msg{
+    width:280px;
+}
+.stop-border{
+    width:260px;
+    margin:0 auto;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e5e5e5;
+    overflow: hidden;
+    position:relative;
+}
+.stop-border div{
+    float:left;
+}
+.stop-border .round{
+    width:10px;
+    height:10px;
+    border-radius: 5px;
+    background:#1990ff;
+    margin-top:10px;
+}
+.stop-msg h4{
+    margin:10px 0;
+    color:#4c4c4c;
+}
+.stop-msg .margin{
+    margin-left:10px;
+}
+.stop-msg .margin2{
+    margin-left:20px;
+}
+.stop-msg span{
+    font-size:14.67px;
+}
+.stop-msg .grade{
+    width:35px;
+    height:19px;
+    line-height: 19px;
+    border-radius: 3px;
+    color:white;
+    text-align: center;
+    background:#fec009;
+    position:absolute;
+    top:10px;
+    right:0;
+}

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boco.modules.brhp.dao.business.outpatient.BizOutpatientOrderDao">
+	<!-- 预约门诊 -->
+	<insert id="insert" parameterType="com.boco.modules.brhp.model.business.outpatient.BizOutpatientOrderEntity">
+		insert into t_biz_outpatient_order (order_number, payment_number, 
+	      patient_id, outpatient_source_id, pay_method, 
+	      order_status, doctor_visit_status, create_time, 
+	      creator_uid, cancle_time
+	      )
+	    values (#{orderNumber,jdbcType=VARCHAR}, #{paymentNumber,jdbcType=VARCHAR}, 
+	      #{patientId,jdbcType=INTEGER}, #{outpatientSourceId,jdbcType=INTEGER}, #{payMethod,jdbcType=VARCHAR}, 
+	      #{orderStatus,jdbcType=VARCHAR}, #{doctorVisitStatus,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+	      #{creatorUid,jdbcType=VARCHAR}, #{cancleTime,jdbcType=TIMESTAMP}
+	      )
+	</insert>
+	
+	<!-- 查询预约列表 -->
+	<select id="getOrderList" parameterType="com.boco.modules.brhp.vo.BizOutpatientOrderVo" resultType="com.boco.modules.brhp.vo.BizOutpatientOrderVo">
+		SELECT
+			a.id,
+			a.order_number,
+			e.patient_name,
+			e.patient_id_card,
+			e.patient_mobile,
+			a.payment_number,
+			a.patient_id,
+			b.staff_id,
+			a.outpatient_source_id,
+			a.pay_method,
+			a.order_status,
+			a.doctor_visit_status,
+			b.registration_fee,
+			c.`name` deptName,
+			d.`name` staffName,
+			b.clinic_date,
+			DATE_FORMAT(b.clinic_date, '%Y-%m-%d') clinicDateStr,
+			CASE b.clinic_time
+		WHEN 0 THEN
+			'上午'
+		WHEN 1 THEN
+			'下午'
+		END clinicTimeChs,
+		 f.org_name,
+		 b.outpatient_type
+		FROM
+			t_biz_outpatient_order a
+		LEFT JOIN t_biz_outpatient_source b ON a.outpatient_source_id = b.id
+		LEFT JOIN t_dept_department c ON b.dept_id = c.dept_id
+		LEFT JOIN t_staff d ON b.staff_id = d.staff_id
+		LEFT JOIN t_user_patient e ON a.patient_id = e.id
+		LEFT JOIN t_org_organization f ON c.org_id = f.org_id
+		<where>
+			<if test="patientId != null and patientId !=0">
+				a.patient_id = #{patientId}
+			</if>
+			<if test="outpatientSourceId != null and outpatientSourceId !=0">
+				AND a.outpatient_source_id = #{outpatientSourceId}
+			</if>
+			<if test="orderStatus != null and orderStatus !=0">
+				AND a.order_status = #{orderStatus}
+			</if>
+			<if test="queryStartTime != null">
+				AND b.clinic_date >= #{queryStartTime}
+			</if>
+			<if test="queryEndDate != null">
+				AND b.clinic_date &lt;= #{queryEndDate}
+			</if>
+			<if test="creatorUid != null and creatorUid != ''">
+				AND a.creator_uid = #{creatorUid}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 查询预约详情 -->
+	<select id="getOrderDetail" parameterType="integer" resultType="com.boco.modules.brhp.vo.BizOutpatientOrderVo">
+		SELECT
+			a.id,
+			a.order_number,
+			e.patient_name,
+			e.patient_id_card,
+			e.patient_mobile,
+			a.payment_number,
+			a.patient_id,
+			b.staff_id,
+			a.outpatient_source_id,
+			a.pay_method,
+			a.order_status,
+			a.doctor_visit_status,
+			b.registration_fee,
+			c.`name` deptName,
+			d.`name` staffName,
+			b.clinic_date,
+			b.outpatient_type,
+			DATE_FORMAT(b.clinic_date, '%Y年%m月%d日') clinicDateStr,
+			CASE b.clinic_time
+		WHEN 0 THEN
+			'上午'
+		WHEN 1 THEN
+			'下午'
+		END clinicTimeChs,
+		 f.org_name,
+		 b.outpatient_type
+		FROM
+			t_biz_outpatient_order a
+		LEFT JOIN t_biz_outpatient_source b ON a.outpatient_source_id = b.id
+		LEFT JOIN t_dept_department c ON b.dept_id = c.dept_id
+		LEFT JOIN t_staff d ON b.staff_id = d.staff_id
+		LEFT JOIN t_user_patient e ON a.patient_id = e.id
+		LEFT JOIN t_org_organization f ON c.org_id = f.org_id
+		WHERE
+			a.id=#{0}
+	</select>
+	
+	<!-- 修改订单状态 -->
+	<update id="updateOrderStatus">
+		update t_biz_outpatient_order set order_status = #{1} where id=#{0}
+	</update>
+</mapper>

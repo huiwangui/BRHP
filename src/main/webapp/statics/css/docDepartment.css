@@ -1,0 +1,142 @@
+
+
+/*----------------医生详情---------------------*/
+
+.hospName,.docDetails,.choose,.introduceBox{/*-----------公共宽度----------*/
+    width:1100px;
+    margin:0 auto;
+}
+.hospName{
+    height:58px;
+    line-height:58px;
+}
+.docBg{
+    height:245px;
+    background: #fafafa;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+.docDetails{
+    overflow: hidden;
+}
+.docPicture,.detailsOrder{
+    float:left;
+}
+/*---------医生头像----------*/
+.docPicture{
+    width:166px;
+    height:166px;
+    border:1px solid #e5e5e5;
+    border-radius: 84px;
+    overflow: hidden;
+    margin:40px 30px;
+}
+.docPicture img{
+    width:100%;
+}
+
+.position{
+    margin:30px 0;
+    overflow: hidden;
+}
+.position div{
+    float:left;
+}
+.positionOrder{
+    margin-top:10px;
+    margin-left:80px;
+}
+.width{
+    width:860px;
+}
+.detailsOrder p{
+    margin:5px 0;
+}
+.blue{
+    color:#1990ff;
+    font-family: '兰亭细黑';
+}
+.size{
+    font-size:18.67px;
+}
+.size1{
+    font-size:16px;
+}
+.size2{
+    font-size:13.34px;
+}
+.choose{
+    margin-top:10px;
+}
+/*----------四个板块的选择-------------*/
+.choose a{
+    display:inline-block;
+    color:#666666;
+    width:200px;
+    height:46px;
+    line-height: 46px;
+    text-align: center;
+    border:1px solid #e5e5e5;
+    margin-bottom: -1px;
+}
+.choose .first{
+    margin-left:-1px;
+}
+.choose .second{
+    background: #fafafa;
+    border-bottom:1px solid #fafafa;
+    color:#1990ff;
+}
+.choose .aBorder{
+    border-right:none;
+}
+/*-------板块内容---------*/
+.introduceBox{
+    border:1px solid #e5e5e5;
+    background: #fafafa;
+    height:500px;
+    font-size:13.34px;
+}
+.introduce{
+    height:480px;
+    width:1080px;
+    margin:10px;
+    border:1px solid #e5e5e5;
+    background: white;
+}
+/*------科室头像及介绍-------*/
+.department-top,.department-bot{
+    overflow: hidden;
+    margin:10px;
+}
+.department-pic,.department-intr{
+    float:left;
+}
+.department-intr{
+    margin-left:15px;
+}
+.department-pic{
+    width:281px;
+    height:183px;
+}
+.department-pic img{
+    width:281px;
+    height:183px;
+}
+.department-intr .tel{
+    overflow:hidden;
+}
+.department-intr .tel div{
+    float:left;
+}
+.department-intr .tel-width{
+    width:80px;
+}
+.department-intr .intr-width{
+    width:750px;
+}
+/*-------蓝色字体---------*/
+.introduce .text-color{
+    color:#1990ff;
+    font-size:16px;
+}

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boco.modules.brhp.dao.business.outpatient.BizOutpatientSourceDao">
+	<!-- 查看医生号表信息（查看可预约的信息） -->
+	<select id="getOutpatientSourceList" parameterType="com.boco.modules.brhp.vo.BizOutpatientSourceVo" resultType="com.boco.modules.brhp.vo.BizOutpatientSourceVo">
+		SELECT
+			a.id,
+			a.clinic_date,
+			d.`name` staffName,
+			a.org_id,
+			b.org_name,
+			a.dept_id,
+			c.`name` dept_name,
+			a.staff_id,
+			a.outpatient_type,
+			a.clinic_time,
+			a.week_day,
+			a.registration_limit,
+			a.order_limit,
+			a.current_number,
+			a.remainder_number,
+			a.registration_fee,
+			CASE a.week_day
+		WHEN 1 THEN
+			'周一'
+		WHEN 2 THEN
+			'周二'
+		WHEN 3 THEN
+			'周三'
+		WHEN 4 THEN
+			'周四'
+		WHEN 5 THEN
+			'周五'
+		WHEN 6 THEN
+			'周六'
+		WHEN 7 THEN
+			'周日'
+		END AS weekDayChs,
+		DATE_FORMAT(a.clinic_date, '%m/%d') AS clinicSimpleDateStr,
+ 		DATE_FORMAT(a.clinic_date, '%Y-%m-%d') AS clinicDateStr,
+		 CASE a.clinic_time
+		WHEN 0 THEN
+			'上'
+		WHEN 1 THEN
+			'下'
+		END AS clinicTimeChs
+		FROM
+			t_biz_outpatient_source a
+		LEFT JOIN t_org_organization b ON a.org_id = b.org_id
+		LEFT JOIN t_dept_department c ON a.dept_id = c.dept_id
+		LEFT JOIN t_staff d ON a.staff_id = d.staff_id
+		WHERE
+			a.`status` = 1
+		<if test="staffId != null and staffId != 0">
+			AND a.staff_id = #{staffId}
+		</if>
+		<if test="deptId != null and deptId != 0">
+			AND a.dept_id = #{deptId}
+		</if>
+		<if test="orgId != null and orgId != 0">
+			AND a.org_id = #{orgId}
+		</if>
+		<if test="queryStartTime != null">
+			AND a.clinic_date >= #{queryStartTime}
+		</if>
+		<if test="queryEndDate != null">
+			AND a.clinic_date &lt;= #{queryEndDate}
+		</if>
+	</select>
+	
+	<!-- 获取某条号表信息 -->
+	<select id="get" parameterType="string" resultType="com.boco.modules.brhp.model.business.outpatient.BizOutpatientSourceEntity">
+		select id,clinic_date,org_id,region_code,dept_id,staff_id,outpatient_type,
+		clinic_time,week_day,registration_limit,order_limit,current_number,remainder_number,status,version,registration_fee
+		from t_biz_outpatient_source where id=#{0}
+	</select>
+	
+	<!-- 预约门诊号量加减 -->
+	<update id="update" parameterType="com.boco.modules.brhp.model.business.outpatient.BizOutpatientSourceEntity">
+		UPDATE t_biz_outpatient_source
+		SET remainder_number = #{remainderNumber},
+		 current_number = #{currentNumber},
+		 version = version + 1
+		WHERE
+			id = #{id}
+		AND version = #{version}
+	</update>
+	
+	<!-- 获取某条号表详细信息 -->
+	<select id="getSourceDetail" parameterType="integer" resultType="com.boco.modules.brhp.vo.BizOutpatientSourceVo">
+		SELECT
+			a.id,
+			a.clinic_date,
+			a.org_id,
+			a.region_code,
+			b.`name` deptName,
+			a.dept_id,
+			a.staff_id,
+			a.outpatient_type,
+			a.clinic_time,
+			a.week_day,
+			a.registration_limit,
+			a.order_limit,
+			a.current_number,
+			a.remainder_number,
+			a.registration_fee,
+			a. STATUS,
+			DATE_FORMAT(
+				a.clinic_date,
+				'%Y年%c月%e日'
+			) clinicDateStr,
+			CASE clinic_time
+		WHEN 0 THEN
+			'上午'
+		WHEN 1 THEN
+			'下午'
+		END clinicTimeChs
+		FROM
+			t_biz_outpatient_source a
+		LEFT JOIN t_dept_department b ON a.dept_id = b.dept_id
+		WHERE
+			a.id = #{0}
+	</select>
+</mapper>

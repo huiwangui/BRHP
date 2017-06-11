@@ -1,0 +1,336 @@
+*{
+	margin:0;
+	padding:0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.clr{
+	clear:both;
+}
+.pull-left{
+	float: left;
+}
+.pull-right{
+	float: right;
+}
+.crumb-bar{
+	height: 58px;
+    line-height: 58px;
+	
+}
+.appoint-info h3{
+	font-weight: normal;
+	color:#808080;
+}
+.appoint-line,.crumb-bar,.docInfo-detail,.person-manage,.pay-ways,.pay-end{
+	width: 1100px;
+    margin: 0 auto;
+} 
+.appoint-line{
+	padding:40px 0;
+}
+.steps>div{
+	text-align:center;
+}
+.steps a{
+	display: inline-block;
+	width: 56px;
+	height:56px;
+	background-image: url(../../statics/image/hhh/step1-1.png);
+	vertical-align: middle;
+	position: relative;
+}
+.steps a.step2-gray{
+	background-image: url(../../statics/image/hhh/step2-1.png);
+}
+.steps a.step3-gray{
+	background-image: url(../../statics/image/hhh/step3-1.png);
+}
+.steps a.step4-gray{
+	background-image: url(../../statics/image/hhh/step4-1.png);
+}
+.steps a div{
+	position: absolute;
+	width: 115px;
+	text-align: center;
+	top: 110%;
+	left:-50%;
+	font-size: 14px;
+	color:#8A8A8A;
+}
+.steps div.linethrough{
+	display: inline-block;
+	background-color:#ddd;
+	height: 1px; 
+	width: 20%;
+	vertical-align: middle;
+}
+.steps a.step1{
+	background-image: url(../../statics/image/hhh/step1-2.png);
+}
+.steps a.step2{
+	background-image: url(../../statics/image/hhh/step2-2.png);
+}
+.steps a.step3{
+	background-image: url(../../statics/image/hhh/step3-2.png);
+}
+.steps a.step4{
+	background-image: url(../../statics/image/hhh/step4-2.png);
+}
+.steps a.step1 span,.steps a.step2 span,.steps a.step3 span,.steps a.step4 span{
+	color: #3799FF;
+}
+
+
+.appoint-back{
+	border-top:1px solid #EDEDED;
+	border-bottom:1px solid #EDEDED;
+	background-color:#FAFAFA;
+	padding:30px 0;
+}
+.detail-part{
+	width: 50%; 
+}
+.detail-part>div{
+	padding:0 20px;
+}
+.doctor-pic{
+	float: left;
+	margin-right:15px;
+}
+.doctor-pic .img{
+	width: 88px;
+	height: 88px;
+	border-radius: 44px;
+	overflow: hidden;
+}
+.doctor-pic .img img{
+	width: 100%;
+	height: 100%;
+}
+.doctorInfo-detail{
+	float: left;
+	width: 70%;
+	font-size: 12px;
+	font-family: "Microsoft YaHei";
+}
+.doctorInfo-detail>div{
+	margin-bottom: 10px
+}
+.doctorInfo-detail .doctor-name{
+	font-size:16px;
+}
+.doctorInfo-detail>div a{
+	color: #8A8A8A;
+	font-size: 15px;
+	text-decoration: none;
+	margin-left:10px;
+}
+.detail-part>div p{
+	margin-bottom: 20px;
+	font-size: 15px;
+	color:#949494;
+}
+
+.person-manage{
+	padding:20px 0;
+}
+.person-list,.payway-list{
+	text-align: center;
+	width: 90%;
+	margin:0 auto;
+}
+.person-list ul li,.payway-list ul li{
+	float: left;
+	position: relative;
+	width: 30%;
+	border:1px dotted #DDDDDD;
+	margin:15px;
+	font-family: "Microsoft YaHei";
+}
+.person-list ul li div,.payway-list ul li div{
+	padding:20px 10px;
+	text-align:left;
+}
+.payway-list ul li div{
+	text-align: center;
+}
+.person-list ul li div.person-name{
+	padding:10px 10px;
+	background-color:#FAFAFA;
+}
+
+.person-list ul li div p{
+	margin:5px;
+}
+
+.person-list ul li a,.payway-list ul li a{
+	visibility: hidden;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	display: inline-block;
+	width: 66px;
+	height: 52px;
+	background-image: url(../../statics/image/hhh/choose.png);
+}
+
+.person-list ul li.active,.payway-list ul li.active{
+	border:1px solid #1990FF;
+}
+
+.person-list ul li.active a,.payway-list ul li.active a{
+	visibility: visible;
+}
+
+.person-list ul li:hover,.payway-list ul li:hover{
+	border:1px solid #1990FF;
+}
+
+.add-person{
+	color: #278EFF; 
+}
+.add-person span{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background-image: url(../../statics/image/hhh/add.png);
+	vertical-align: bottom;
+	margin-right:5px;
+}
+.sum{
+	padding:15px 0;
+	text-align:center;
+	border-bottom: 1px solid #EBEBEB;
+}
+.confirm{
+	padding-top:30px;
+	text-align:center;
+}
+.confirm a,.sub-item a{
+	display: inline-block;
+	padding:4px;
+	width: 75px;
+	color:#FFFFFF;
+	background-color: #1990FF;
+	border-radius: 3px;
+	font-size: 14px;
+	margin:0 5px;
+}
+.confirm a.btn-confirm,.sub-item a.btn-add{
+	background-color: #FEC009;
+}
+
+.layer{
+	visibility: hidden;
+	position: fixed;
+	width: 550px;
+	top: 50%;
+	left: 50%;
+	margin-top: -10%;
+	margin-left: -225px;
+	border:1px solid #EEEEEE;
+	box-shadow: 0 0 2px rgba(0,0,0,.3);
+	font-size: 14px;
+	background-color: #FFFFFF;
+	z-index: 9999;
+	font-family: "Microsoft YaHei";
+}
+.layer .layer-head{
+	padding: 8px;
+	color:#9B9B9B;
+	position: relative;
+}
+.layer .layer-head a.clz{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background-image: url(../../statics/image/hhh/close.png);
+	position: absolute;
+	top: 5px;
+	right: 5px;
+}
+.layer .layer-body{
+	padding:20px 50px;
+	background-color: #FFFFFF;
+	color:#9B9B9B;
+}
+.layer .layer-body form .info-item{
+	width: 100%;
+	margin-bottom: 15px;
+	text-align: center;
+}
+.layer .layer-body form .defult-item{
+	text-align: left;
+	padding-left:30px;
+}
+.layer .layer-body form .info-item>label{
+	display: inline-block;
+	width: 15%;
+	color:#9B9B9B;
+	text-align: left;
+}
+.layer .layer-body form .info-item>div{
+	display: inline-block;
+	width: 80%;
+	text-align: left;
+}
+.layer .layer-body form .info-item>div input[type=text]{
+	width: 100%;
+	padding:7px 5px;
+	border:1px solid #F0F0F0;
+	outline: none;
+}
+.layer .layer-body form .info-item>div input[type=radio]{
+	margin:5px;
+}
+.step-tab,.pay-tab,.pay-success{
+	-webkit-transition: all 0.4s ease;
+	-o-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+}
+
+.pay-tab .confirm,.pay-success .confirm{
+	padding-bottom:20px;
+}
+.payway-list ul li{
+	background-color: #FFFFFF;
+	height: 90px;
+}
+.payway-list ul li span.bank{
+	display: inline-block;
+	width: 70px;
+	height: 45px;
+	background-image: url(../../statics/image/hhh/yinlian.png);
+}
+.payway-list ul li span.weixin{
+	display: inline-block;
+	width: 56px;
+	height: 50px;
+	background-image: url(../../statics/image/hhh/wx.png);
+}
+.payway-list ul li span.epay{
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	background-image: url(../../statics/image/hhh/zfb.png);
+}
+.payway-list ul li span{
+	vertical-align: middle;
+	margin:0 5px;
+}
+.pay-end{
+	text-align: center;
+}
+.pay-end p,.pay-end .succes-end{
+	margin-bottom:10px;
+	font-family: "Microsoft YaHei";
+	font-size:14px;
+}
+.succes-end{
+	display: inline-block;
+	width: 107px;
+	height: 107px;
+	background-image: url(../../statics/image/hhh/success.png);
+}

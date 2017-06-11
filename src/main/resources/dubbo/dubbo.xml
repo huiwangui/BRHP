@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://code.alibabatech.com/schema/dubbo
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	<!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+	<dubbo:application name="bocohealth" />
+	<!-- 使用multicast广播注册中心暴露发现服务地址 -->
+ 	<dubbo:registry address="zookeeper://192.168.15.49:2181" /> 
+	<!--<dubbo:registry address="zookeeper://192.168.15.33:2181" /> 赵春同学的 -->
+	 
+	<!-- 基础服务平台日志 -->
+	<dubbo:reference id="logManagmentService"
+		interface="com.boco.sp.external.service.LogManagementService" timeout="100000" />
+</beans>

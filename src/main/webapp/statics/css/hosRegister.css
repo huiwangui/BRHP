@@ -1,0 +1,98 @@
+
+
+/*-------------注册-------------*/
+.register-box,.search,.list{/*--------公共宽度------*/
+    width:1100px;
+    margin:0 auto;
+}
+.register-box{
+    border:1px solid #e5e5e5;
+    margin-top:10px;
+    overflow: hidden;
+}
+.box{
+    margin-top:60px;
+    overflow: hidden;
+}
+.register-box .left,.register-box .right{
+    float:left;
+}
+.left{
+    margin-left:138px;
+}
+.box label{
+    width:80px;
+    font-size:16px;
+    display: inline-block;
+}
+.box .size{
+    font-size:14.67px;
+    height:28px;
+    width:250px;
+    margin:10px 0;
+    padding:0;
+    text-indent: 5px;
+    color:#666;
+}
+.box select{
+    font-size:14.67px;
+    color:#b2b2b2;
+    height:30px;
+    width:254px;
+    margin:10px 0;
+    padding:0;
+}
+.box .man{
+    width:30px;
+}
+.box .size2{
+    height:28px;
+    width:130px;
+    margin:10px 0;
+    text-indent: 5px;
+    color:#666;
+}
+.box .tel,.reset,.submit{/*------------三个按钮样式----------------*/
+    width:110px;
+    height:34px;
+    padding:0;
+    border:1px solid #1990ff;
+    color:white;
+    background: #1990ff;
+    font-size:14.67px;
+    cursor:pointer;
+}
+.box .tel{
+    margin-left:10px;
+}
+.box .right{
+    margin-left:234px;
+    width:300px;
+}
+.right h4{
+    margin-top:0px;
+}
+.right p{
+    margin:0;
+    line-height:24px;
+    font-size:14.67px;
+}
+.agreement{
+    margin-left:138px;
+    margin-top:25px;
+    width:16px;
+    height:16px;
+}
+.agreement-size{
+    font-size:13.34px;
+    position: relative;
+    top:-3px;
+}
+.agreement-size a{
+    color:#1990ff;
+}
+.submit{
+    margin:30px 40px 30px 406px;
+}
+
+

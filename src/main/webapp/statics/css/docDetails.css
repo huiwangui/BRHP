@@ -1,0 +1,262 @@
+
+/*---------------------------------------*/
+body,ul{
+    margin:0;
+    padding:0;
+}
+body{
+    font-family: "Microsoft YaHei";
+    color:#666666;
+}
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+.topBox{
+    height:36px;
+    background:#f5f5f5;
+}
+.top,.logo,.nav,.hospName,.docDetails,.choose,.introduceBox,.footer,.bottom{/*-----------公共宽度-----------------*/
+    width:1100px;
+    margin:0 auto;
+}
+.top span{
+    font-family: "Microsoft YaHei";
+    font-size:13.34px;
+    line-height:36px;
+    color:#666666;
+}
+.top li{
+    margin-left:10px;
+    float:left;
+}
+.top a{
+    display: inline-block;
+    height:20px;
+    width:95px;
+    border:1px solid #56adff;
+    margin-top:8px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 10px 10px;
+    color:#666666;
+}
+.topBox ul,.logo ul{
+    overflow:hidden;
+    float:right;
+}
+
+
+/*------------logo------------*/
+.logoMargin{
+    margin:10px 0;
+}
+.logo ul{
+    margin-top:25px;
+}
+.logo ul li{
+    height:26px;
+    line-height: 26px;
+    margin-right:10px;
+    text-align: center;
+    float:left;
+}
+.logo ul li img{
+    vertical-align: middle;
+}
+.weather{
+    margin-left:100px;
+}
+
+/*------------菜单------------------*/
+.navBox{
+    height:50px;
+    background:#1990ff;
+}
+.nav{
+    overflow:hidden;
+}
+.nav li{
+    float:left;
+}
+.nav li:hover{
+    background: #026ccf;
+}
+.nav a{
+    line-height: 50px;
+    color:white;
+    text-decoration:none;
+    padding:0 30px;
+}
+.hospName{
+    height:58px;
+    line-height:58px;
+}
+
+/*----------------医生详情---------------------*/
+.docBg{
+    height:245px;
+    background: #fafafa;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+.docDetails{
+    overflow: hidden;
+}
+.docPicture,.detailsOrder{
+    float:left;
+}
+.docPicture{
+    width:166px;
+    height:166px;
+    border:1px solid #e5e5e5;
+    border-radius: 84px;
+    overflow: hidden;
+    margin:40px 30px;
+}
+.docPicture img{
+    width:100%;
+}
+/*.detailsOrder div{*/
+    /*float:left;*/
+/*}*/
+.position{
+    margin:30px 0;
+    overflow: hidden;
+}
+.position div{
+    float:left;
+}
+.positionOrder{
+    margin-top:10px;
+    margin-left:80px;
+}
+.width{
+    width:860px;
+}
+.detailsOrder p{
+    margin:5px 0;
+}
+.blue{
+    color:#1990ff;
+    font-family: 'Microsoft YaHei';
+}
+.size{
+    font-size:18.67px;
+}
+.size1{
+    font-size:16px;
+}
+.size2{
+    font-size:13.34px;
+}
+.choose{
+    margin-top:10px;
+}
+.choose a{
+    display:inline-block;
+    color:#666666;
+    width:200px;
+    height:46px;
+    line-height: 46px;
+    text-align: center;
+    border:1px solid #e5e5e5;
+    margin-bottom: -1px;
+}
+.choose .first{
+    margin-left:-1px;
+    background: #fafafa;
+    border-bottom:1px solid #fafafa;
+    color:#1990ff;
+}
+.choose .aBorder{
+    border-right:none;
+}
+.introduceBox{
+    border:1px solid #e5e5e5;
+    background: #fafafa;
+    height:400px;
+}
+.introduce{
+    height:380px;
+    width:1080px;
+    margin:10px;
+    border:1px solid #e5e5e5;
+    background: white;
+}
+.introduce p{
+    margin:15px;
+    font-size:13.34px;
+    font-family: 'Microsoft YaHei';
+}
+
+/*------------尾部--------------*/
+.footerBg{
+    height:210px;
+    background:#0184ff;
+    margin-top:10px;
+}
+.footer div{
+    float:left;
+    color:white;
+    font-family: "Microsoft YaHei";
+    font-size:14.67px;
+}
+.footLogo{
+    margin-top:60px;
+}
+.friendLink{
+    margin-left:30px;
+}
+.friendLink p{
+    margin-top:40px;
+}
+.link{
+    float:left;
+    margin-right:10px;
+}
+.lingUl{
+    overflow: hidden;
+}
+.link li{
+    height:25px;
+    line-height: 25px;
+}
+.link a{
+    color:white;
+}
+.yiYang{
+    margin-top:20px!important;
+}
+.suggest{
+    margin-top:50px;
+    margin-left:70px;
+}
+.suggest div{
+    margin:0 30px;
+}
+/*-------------底部声明----------------*/
+.bottomBg{
+    height:30px;
+    background:#f5f5f5;
+}
+.bottom{
+    line-height: 30px;
+    overflow: hidden;
+    font-size: 13.34px;
+    color:#666666;
+}
+.bottom a{
+    color:#666666;
+}
+.bottom div{
+    float:left;
+}
+.middle{
+    margin-left:170px;
+}
+.right{
+    margin-left:200px;
+}

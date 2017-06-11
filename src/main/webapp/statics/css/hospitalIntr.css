@@ -1,0 +1,98 @@
+
+/*---------------医院详情----------------*/
+.hospName,.hosDetails,.choose,.hospital-box{/*-----------公共宽度-----------------*/
+    width:1100px;
+    margin:0 auto;
+}
+.hospName{
+    height:58px;
+    line-height:58px;
+}
+.hosBg{
+    height:245px;
+    background: #fafafa;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+.hosDetails{
+    overflow: hidden;
+}
+.hosPicture,.hosIntr{
+    float:left;
+}
+.hosPicture{
+    width:302px;
+    height:216px;
+    border:1px solid #e5e5e5;
+    overflow: hidden;
+    margin:14px 0;
+}
+.hosPicture img{
+    width:100%;
+}
+.hosIntr{
+    margin-left:40px;
+    width:750px;
+}
+.hosIntr p{
+    margin:10px 0;
+    font-size:13.34px;
+    color:#999;
+}
+.hosName{
+    font-size:16px;
+    font-weight: 600;
+    color:#999999;
+    display: inline-block;
+    margin:20px 0;
+}
+.hosGrade{
+    color:#fec009;
+    font-size:16px;
+}
+.hosIntr .blue{
+    color:#1990ff;
+}
+
+/*-----------选择板块按钮--------------*/
+.choose{
+    margin-top:10px;
+}
+.choose a{
+    display:inline-block;
+    color:#666666;
+    width:200px;
+    height:46px;
+    line-height: 46px;
+    text-align: center;
+    border:1px solid #e5e5e5;
+    margin-bottom: -1px;
+}
+.choose .first{
+    margin-left:-1px;
+}
+.choose .aBorder{
+    border-right:none;
+}
+.choose .third{
+    color:#1990ff;
+    background: #fafafa;
+    border-bottom:1px solid #fafafa;
+}
+    /*-------板块内容-------*/
+.hospital-box{
+    border:1px solid #e5e5e5;
+    background: #fafafa;
+}
+.department{
+    height:380px;
+    width:1080px;
+    margin:10px;
+    border:1px solid #e5e5e5;
+    background: white;
+}
+.department p{
+    margin:15px;
+    font-size:13.34px;
+    font-family: 'Microsoft YaHei';
+}

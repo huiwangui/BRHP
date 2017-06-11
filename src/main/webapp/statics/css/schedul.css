@@ -1,0 +1,89 @@
+*{
+	margin:0;
+	padding:0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.clr{
+	clear:both;
+}
+.pull-left{
+	float: left;
+	
+}
+.schedul-box{
+	width: 90%;
+	margin:0 auto;
+	padding-top: 15px; 
+}
+.schedul-box>p{
+	color:#8D8D8D;
+	margin-bottom: 15px;
+}
+.side-table{
+	width: 20%;
+}
+.side-table table,.list-box table{
+	width: 100%;
+	border-spacing: 0;
+	font-size: 14px;
+	font-family: "Microsoft YaHei";
+	border:1px solid #EFEFEF;
+	border-bottom: 0;
+	border-right:0;
+	background-color: #FFFFFF;
+}
+.side-table table tr th a{
+	display: inline-block;
+	width: 21px;
+	height:20px;
+	background-image: url(../image/eee/prev.png);
+	vertical-align: middle;
+	margin:0 10px;
+}
+.side-table table tr th a.next{
+	background-image: url(../image/eee/next.png);
+}
+.list-box table{
+	border-left: 0;
+	table-layout:fixed;
+	-webkit-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+.list-box table tr th{
+	width: 100px;
+}
+.list-box{
+	height:261px;
+	width: 700px;
+	overflow: hidden;
+}
+.schedul-tab div table tr th,.schedul-tab div table tr td{
+	height:50px;
+	color:#7C7C7C;
+	border-right: 1px solid #EFEFEF;
+	border-bottom: 1px solid #EFEFEF;
+	text-align: center;
+}
+.schedul-tab div table tr td{
+	height:70px;
+
+}
+
+.schedul-tab div.list-box table tr td p{
+	font-size: 10px;
+	color: #FFFFFF;
+	margin-top: 10px;
+    margin-bottom: -10px;
+}
+.schedul-tab div.list-box table tr td.date-full{
+	background-color: #E0DEDB;
+	color:#FF6C0A;
+}
+.schedul-tab div.list-box table tr td.date-free{
+	background-color: #FEC009;
+	color: #FFFFFF;
+	cursor: pointer;
+}

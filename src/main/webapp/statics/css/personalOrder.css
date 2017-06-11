@@ -1,0 +1,84 @@
+
+.nav .current{
+    background: #026ccf;
+}
+.message-box{
+    width:1100px;
+    height:600px;
+    margin:10px auto 0;
+    background:#fafafa;
+    border:1px solid #e5e5e5;
+    overflow: hidden;
+}
+.message-box>div{
+    float: left;
+}
+.left-msg{
+    width:250px;
+    height:600px;
+    background:#ebf3ff;
+}
+.left-msg .current{/*-------��ǰ����ɫ---------*/
+    background: #fafafa;
+}
+.left-msg .current span{
+    color:#1990ff;
+}
+.left-msg li a{
+    display: block;
+    width:250px;
+    height:50px;
+    line-height: 50px;
+}
+.left-msg li img{
+    margin-left: 30px;
+    vertical-align: middle;
+}
+.left-msg li span{
+    margin-left: 15px;
+    color:#808080;
+}
+.right-msg{
+	width:845px;
+}
+/*-----�Ҳ���Ϣ��------*/
+.right-top{
+    margin-left:50px;
+    margin-top:40px;
+    width:738px;
+}
+.right-top .select{
+    width:150px;
+    height:30px;
+}
+/*���*/
+.bootstrap-table{
+	height: 400px;
+width: 90%;
+margin: 0px auto;
+background-color: rgb(255, 255, 255);
+margin-top: 15px;
+}
+table{
+    border-spacing: 0;
+    width:100%;
+}
+.fixed-table-body {
+    height: 400px;
+}
+table td{
+    text-align: center;
+    width:120px;
+    height:30px;
+    border-right:1px solid #e5e5e5;
+    border-bottom:1px solid #e5e5e5;
+}
+table .tHead{
+    background:#ebf3ff;
+}
+table .blue{
+    color:#1990ff;
+}
+table .red{
+    color:red;
+}

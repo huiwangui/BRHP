@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boco.modules.brhp.dao.healthedu.HealthEduModuleDao">
+	<sql id="Base_Column_List" >
+		id, module_name, img, status, create_time
+	</sql>
+	
+	<!-- 获取文章模块列表  -->
+	<select id="getModuleList" resultType="com.boco.modules.brhp.model.healthedu.HealthEduModuleEntity">
+		select <include refid="Base_Column_List"></include>
+		from t_health_edu_module
+	</select>
+	
+	<!-- 新增模块 -->
+	<insert id="insert" parameterType="com.boco.modules.brhp.model.healthedu.HealthEduModuleEntity">
+		insert into t_health_edu_module (module_name, img, 
+	      status, create_time)
+	    values (#{moduleName,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, 
+	      #{status,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+	</insert>
+</mapper>
